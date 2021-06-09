@@ -15,6 +15,16 @@ namespace snake
 
             Point p2 = new Point(4, 7, '#');
             p2.Draw();
+
+            List<Point> pList = new List<Point>();
+            pList.Add(p1);
+            pList.Add(p2);
+            pList.Add(new Point(3, 7, '$'));
+
+            foreach(Point p in pList)
+            {
+                p.Draw();
+            }
             Console.ReadKey();
         }
         static void Draw(int x, int y, char sym)
