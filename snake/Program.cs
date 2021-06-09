@@ -12,6 +12,7 @@ namespace snake
         {
             Draw(1, 3, '*');
             Draw(5, 9, '#');
+            Draw(4, 2, '#');
 
 
             Console.ReadKey();
