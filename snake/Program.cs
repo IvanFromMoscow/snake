@@ -25,6 +25,11 @@ namespace snake
             {
                 p.Draw();
             }
+
+            HorizontalLine hl = new HorizontalLine(1, 8, 3, '&');
+            hl.Draw();
+            VerticalLine vl = new VerticalLine(1, 8, 10, '+');
+            vl.Draw();
             Console.ReadKey();
         }
         static void Draw(int x, int y, char sym)
