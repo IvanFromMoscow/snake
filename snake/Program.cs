@@ -10,9 +10,11 @@ namespace snake
     {
         static void Main(string[] args)
         {
-            Draw(1, 3, '*');
-            Draw(5, 9, '#');
-
+            Point p1 = new Point();
+            p1.x = 1;
+            p1.y = 5;
+            p1.sym = '*';
+            p1.Draw();
 
             Console.ReadKey();
         }
