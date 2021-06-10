@@ -25,6 +25,10 @@ namespace snake
             VerticalLine vl_right = new VerticalLine(0, 24, 78, '+');
             vl_left.Draw();
             vl_right.Draw();
+
+            Point p = new Point(4, 5, '*');
+            Snake sn = new Snake(p, 10, Direction.RIGHT);
+            sn.Draw();
             Console.ReadKey();
         }
         static void Draw(int x, int y, char sym)

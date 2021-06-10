@@ -21,7 +21,29 @@ namespace snake
             this.y = _y;
             this.sym = _sym;
         }
-
+        public Point(Point p):this(p.x, p.y, p.sym)
+        {
+           
+        }
+        public void Move(int offset, Direction direction)
+        {
+            if (direction == Direction.LEFT)
+            {
+                this.x -= offset;
+            }
+            else if (direction == Direction.RIGHT)
+            {
+                this.x += offset;
+            }
+            else if(direction == Direction.UP)
+            {
+                this.y -= offset;
+            }
+            else
+            {
+                this.y += offset;
+            }
+        }
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
