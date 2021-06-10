@@ -44,6 +44,13 @@ namespace snake
                 this.y += offset;
             }
         }
+
+        internal void Clear()
+        {
+            this.sym = ' ';
+            Draw();
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
