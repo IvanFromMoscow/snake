@@ -30,20 +30,17 @@ namespace snake
             Point p = new Point(4, 5, '*');
             Snake sn = new Snake(p, 10, Direction.RIGHT);
             sn.Draw();
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    sn.HandleKey(key.Key);
+                }
 
-            Thread.Sleep(300);
-            sn.Move();
-            Thread.Sleep(300);
-            sn.Move();
-            Thread.Sleep(300);
-            sn.Move();
-            Thread.Sleep(300);
-            sn.Move();
-            Thread.Sleep(300);
-            sn.Move();
-
-
-            Console.ReadKey();
+                Thread.Sleep(300);
+                sn.Move();
+            }
         }
         static void Draw(int x, int y, char sym)
         {
