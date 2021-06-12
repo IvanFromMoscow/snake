@@ -11,30 +11,21 @@ namespace snake
     {
         static void Main(string[] args)
         {
-            //console.clear();
-            //console.setwindowsize(1, 1);
-            //console.setbuffersize(80, 80); 
             Console.SetBufferSize(800, 800);
-           
-            HorizontalLine hl_up = new HorizontalLine(0, 78, 0, '+');
-            HorizontalLine hl_down = new HorizontalLine(0, 78, 24, '+');
-            
-            hl_up.Draw();
-            hl_down.Draw();
+            Walls walls = new Walls(26, 80);
+            walls.Draw();
 
-            VerticalLine vl_left = new VerticalLine(0, 24, 0, '+');
-            VerticalLine vl_right = new VerticalLine(0, 24, 78, '+');
-            vl_left.Draw();
-            vl_right.Draw();
-
-            Point p = new Point(4, 5, '*');
-            Snake sn = new Snake(p, 3, Direction.RIGHT);
+            Snake sn = new Snake(new Point(4, 5, '*'), 3, Direction.RIGHT);
             sn.Draw();
-            CreatorFood cf = new CreatorFood(78, 24, '$');
+            CreatorFood cf = new CreatorFood(50, 15, '$');
             Point food = cf.Create();
             food.Draw();
             while (true)
             {
+                if(walls.isHit(sn) || sn.isHitTail())
+                {
+                    break;
+                }
                 if (sn.Eat(food))
                 {
 
@@ -50,6 +41,20 @@ namespace snake
                 Thread.Sleep(100);
                 sn.Move();
             }
+            Fin();
+        }
+        static void Fin()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            new HorizontalLine(20, 60, 5, '+').Draw();
+            new VerticalLine(5, 15, 20, '+').Draw();
+            new VerticalLine(5, 15, 60, '+').Draw();
+            new HorizontalLine(20, 60, 15, '+').Draw();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(35, 7);
+            Console.WriteLine("GAME OVER!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
         }
         static void Draw(int x, int y, char sym)
         {
