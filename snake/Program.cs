@@ -28,17 +28,26 @@ namespace snake
             vl_right.Draw();
 
             Point p = new Point(4, 5, '*');
-            Snake sn = new Snake(p, 10, Direction.RIGHT);
+            Snake sn = new Snake(p, 3, Direction.RIGHT);
             sn.Draw();
+            CreatorFood cf = new CreatorFood(78, 24, '$');
+            Point food = cf.Create();
+            food.Draw();
             while (true)
             {
+                if (sn.Eat(food))
+                {
+
+                    food = cf.Create('$');
+                    food.Draw();
+                }
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     sn.HandleKey(key.Key);
                 }
 
-                Thread.Sleep(300);
+                Thread.Sleep(100);
                 sn.Move();
             }
         }
